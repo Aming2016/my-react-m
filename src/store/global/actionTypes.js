@@ -1,0 +1,1 @@
+export const GET_ALLDATA= 'global/GET_ALLDATA';
