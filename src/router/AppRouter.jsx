@@ -20,6 +20,7 @@ const allRoutes = routes.map(item => {
     return {
         path: item.path,
         component: ReactLoadable({ loader: item.component, loading: PageLoading }),
+        authquery:item.authquery?true:false,
     };
 });
 class AppRouter extends PureComponent {
@@ -35,7 +36,7 @@ class AppRouter extends PureComponent {
         // const {userPaths} = this.props;
         // const allPaths = [...userPaths, ...commonPaths];
         // const userRoutes = allRoutes.filter(item => allPaths.includes(item.path));
-
+        
         const userRoutes = allRoutes;
         return (
             <BrowserRouter basename={ROUTE_BASE_NAME}>
@@ -51,12 +52,12 @@ class AppRouter extends PureComponent {
                             let isNoAuthRoute = false;
                             // 不需要登录的页面
                             if (AuthRoutes.includes(path)) isNoAuthRoute = true;
-
                             return (
                                 <KeepAuthRoute
                                     key={path}
                                     exact
                                     path={path}
+                                    authquery={item.authquery}
                                     Auth={isNoAuthRoute}
                                     component={component}
                                 />

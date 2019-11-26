@@ -11,7 +11,7 @@ export const yestabbar = [
     '/mine'
 ];
 
-//需要登录就可以访问的页面路径
+//需要登录才可以访问的页面路径
 export const Auths = [
     '/mine'
 ];
@@ -39,5 +39,6 @@ export default [
         path: '/mine',
         titleName:'我的',
         component: () => import('@/pages/mine'),
+        authquery:true,
     },
 ];

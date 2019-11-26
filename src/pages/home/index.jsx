@@ -5,10 +5,8 @@ class Home extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {}
-
     }
     componentDidMount(){
-       console.log(typeof null==='object')
     }
     render() {
         return (
@@ -20,7 +18,6 @@ class Home extends PureComponent {
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         // mydata: state.user.mydata
     }

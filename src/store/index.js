@@ -6,13 +6,13 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage: storage,
-  whitelist: ['user','global'] //navigation会存入缓存，其他不会存，适用于大多数数据并不会实时从后台拿数据
+  whitelist: ['user', 'global'] //navigation会存入缓存，其他不会存，适用于大多数数据并不会实时从后台拿数据
 };
-
 const persistReducers = persistReducer(persistConfig, reducer);  // 包装rootReducer
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
   : compose;
-const store = persistStore(createStore(persistReducers, composeEnhancers(applyMiddleware(thunk))));
+const store = createStore(persistReducers, composeEnhancers(applyMiddleware(thunk)));
 
+export const persistor = persistStore(store)
 export default store;
